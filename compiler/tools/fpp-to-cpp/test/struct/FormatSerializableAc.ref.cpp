@@ -353,13 +353,13 @@ void Format ::
     this->m_m8,
     this->m_m9,
     this->m_m10,
-    this->m_m11,
-    this->m_m12,
-    this->m_m13,
-    this->m_m14,
-    this->m_m15,
-    this->m_m16,
-    this->m_m17
+    (double)(this->m_m11),
+    (double)(this->m_m12),
+    (double)(this->m_m13),
+    (double)(this->m_m14),
+    (double)(this->m_m15),
+    (double)(this->m_m16),
+    (double)(this->m_m17)
   );
 }
 

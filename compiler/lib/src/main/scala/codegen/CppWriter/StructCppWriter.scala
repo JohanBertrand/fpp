@@ -488,12 +488,16 @@ case class StructCppWriter(
                     (sizes.contains(n), typeMembers(n)) match {
                       case (false, _: Type.String) =>
                         List(s"this->m_$n.toChar()")
+                      case (false, _) if tn == "F32" =>
+                        List(s"(double)(this->m_$n)")
                       case (false, t) if s.isPrimitive(t, tn) =>
                         List(s"this->m_$n")
                       case (false, _) =>
                         List(s"${n}Str.toChar()")
                       case (true, _: Type.String) =>
                         List.range(0, sizes(n)).map(i => s"this->m_$n[$i].toChar()")
+                      case (true, _) if tn == "F32" =>
+                        List.range(0, sizes(n)).map(i => s"(double)(this->m_$n[$i])")
                       case (true, t) if s.isPrimitive(t, tn) =>
                         List.range(0, sizes(n)).map(i => s"this->m_$n[$i]")
                       case _ =>

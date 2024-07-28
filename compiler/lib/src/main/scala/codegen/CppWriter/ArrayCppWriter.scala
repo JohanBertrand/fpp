@@ -417,7 +417,7 @@ case class ArrayCppWriter (
         List(Line.blank),
       ).flatten
     // Write format arguments in toString()
-    val formatArgs =
+    val formatArgs = // Need to check for float here ?
       if hasPrimitiveEltType then
         lines(List.range(0, arraySize).map(i => s"this->elements[$i]").mkString(",\n"))
       else if hasStringEltType then
